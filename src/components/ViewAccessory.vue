@@ -1,5 +1,5 @@
 <template>
-  <img :src="imgUrl" @mousedown="startDrag" @mousemove="drag" @mouseup="stopDrag" :style="positionCSS" class="ViewAccessory" />
+  <img :src="imgUrl" @dragenter="startDrag" @drag="drag" @dragend="stopDrag" :style="positionCSS" class="ViewAccessory" />
 </template>
 
 <script>
@@ -32,6 +32,7 @@ export default {
   },
   methods: {
     startDrag(e) {
+      console.log("drag started", e);
       const thisAccessory = this.$el
       this.isDraggable = true
       this.isDragging = true;
@@ -45,12 +46,14 @@ export default {
       // thisAccessory.style.left = `${ e.pageY - thisAccessory.offsetHeight / 2 }px`
     },
     drag(e) {
+      console.log("dragging", e);
       if (this.isDragging) {
         this.top = `${ e.pageY - this.$el.offsetWidth / 2 }px`;
         this.left = `${ e.pageX - this.$el.offsetHeight / 2 }px`;
       }
     },
     stopDrag() {
+      console.log("dragging stopped");
       this.isDragging = false;
     }
   }
