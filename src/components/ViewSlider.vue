@@ -1,10 +1,10 @@
 <template>
   <div class="ViewSlider">
-    <div class="side-button" @click="scrollLeft">👈</div>
+    <button class="side-button" @click="scrollLeft">◀</button>
     <div class="content">
       <img :src="optionsArr[currentIdx]" />
     </div>
-    <div class="side-button" @click="scrollRight">👉</div>
+    <button class="side-button" @click="scrollRight">▶</button>
   </div>
 </template>
 
@@ -34,31 +34,26 @@ export default {
 </script>
 
 <style scoped>
-.side-button {
-  flex-basis: 100%;
+button.side-button{
+  height: 200px;
+  font-size: 20px;
+  max-width: 100px;
 }
 
 img {
-  display: flex;
-  flex-shrink: 0;
-  min-width: 100%;
-  min-height: 100%;
+  height: 200px;
 }
-@media screen and (min-width: 800px) {
-  .ViewSlider {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    text-align: center;
-    height: calc(100vh/3);
-  }
 
-  .side-button {
-    flex: 1;
-  }
-  .content {
-    flex: 7;
-  }
+.content {
+  display: flex;
+}
+.ViewSlider {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border: red;
 }
 </style>
