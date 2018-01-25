@@ -1,25 +1,24 @@
 <template>
   <div class="App">
-    <cat-container>
+    <CatContainer>
       <ViewSlider />
       <ViewSlider />
       <ViewSlider />
-    </cat-container>
-    <closet/>
-  </div>
+    </CatContainer>
+    <TheCloset/>
 </template>
 
 <script>
 import CatContainer from "./components/CatContainer";
 import ViewSlider from "./components/ViewSlider";
-import Closet from "./components/Closet";
+import TheCloset from './components/TheCloset';
+import CatContainer from './components/CatContainer';
 
 export default {
   name: "app",
   components: {
     CatContainer,
-    ViewSlider,
-    Closet
+    TheCloset,
   },
   data() {
     return {
@@ -49,6 +48,22 @@ export default {
 };
 </script>
 
+<style>
+/* CSS reset stuff */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+</style>
+
+
 <style scoped>
 #app {
   margin: 0 auto;
@@ -56,23 +71,16 @@ export default {
   display: flex;
   padding: 10px;
 }
-html,
-body,
-.App {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-.CatContainer,
-.Closet {
+
+.CatContainer, .TheCloset {
   border: 1px dashed black;
+  height: 100%;
 }
 .CatContainer {
-  width: calc(75% - 20px);
-  margin-right: 10px;
+  width: 85%;
 }
-.Closet {
-  width: calc(25% - 10px);
+.TheCloset {
+  width: 15%;
+  background-color: red;
 }
 </style>
