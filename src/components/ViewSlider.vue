@@ -14,28 +14,35 @@ export default {
     return {
       currentIdx: 1,
       optionsArr: [
-        'https://www.placecage.com/200/200',
-        'https://www.placecage.com/300/300',
-        'https://www.placecage.com/500/500',
-        'https://www.placecage.com/700/700',
-        'https://www.placecage.com/900/900',
+        "https://www.placecage.com/200/200",
+        "https://www.placecage.com/300/300",
+        "https://www.placecage.com/500/500",
+        "https://www.placecage.com/700/700",
+        "https://www.placecage.com/900/900"
       ]
-    }
+    };
   },
   methods: {
     scrollLeft() {
-      if (this.currentIdx) --this.currentIdx
+      if (this.currentIdx) --this.currentIdx;
     },
     scrollRight() {
-      if (this.currentIdx < this.optionsArr.length - 1) ++this.currentIdx
+      if (this.currentIdx < this.optionsArr.length - 1) ++this.currentIdx;
     }
   }
-}
+};
 </script>
 
 <style scoped>
 .side-button {
   flex-basis: 100%;
+}
+
+img {
+  display: flex;
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 @media screen and (min-width: 800px) {
   .ViewSlider {
@@ -44,7 +51,9 @@ export default {
     flex-wrap: nowrap;
     align-items: center;
     text-align: center;
+    height: calc(100vh/3);
   }
+
   .side-button {
     flex: 1;
   }
@@ -53,4 +62,3 @@ export default {
   }
 }
 </style>
-
