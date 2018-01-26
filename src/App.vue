@@ -1,5 +1,5 @@
 <template>
-  <div class="App">
+  <div id="app">
     <h1>😸 Vuer</h1>
     <div class="content">
       <CatContainer>
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style scoped>
-.App {
+#app {
   display: flex;
   flex-direction: column;
   height: 100%;

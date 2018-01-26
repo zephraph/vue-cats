@@ -21,15 +21,12 @@ export default {
       accessories: [
         {
           imgUrl: 'https://www.placecage.com/100/100',
-          // width: 100,
           height: 100,
         }, {
           imgUrl: 'https://www.placecage.com/100/100',
-          // width: 100,
           height: 100,
         }, {
           imgUrl: 'https://www.placecage.com/100/100',
-          // width: 100,
           height: 100,
         },
       ]
