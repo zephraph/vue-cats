@@ -46,7 +46,6 @@ export default {
 <style>
 .TheCloset {
   overflow: scroll;
-  padding: 5px;
   text-align: center;
 }
 .accessory-box {
