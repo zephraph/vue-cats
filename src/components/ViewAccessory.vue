@@ -1,5 +1,5 @@
 <template>
-  <img :src="imgUrl" @dragenter="startDrag" @drag="drag" @dragend="stopDrag" :style="positionCSS" class="ViewAccessory" />
+  <img :src="imgUrl" @dragenter="startDrag" @dragend="dropAccessory" :style="positionCSS" class="ViewAccessory" />
 </template>
 
 <script>
@@ -13,7 +13,6 @@ export default {
   data() {
     return {
       isDraggable: false,
-      isDragging: false,
       top: 0,
       left: 0,
     }
@@ -23,38 +22,37 @@ export default {
       if (this.isDraggable) {
         return `
           position: absolute;
+          z-index: 1;
           top: ${ this.top }px;
           left: ${ this.left }px;
         `
       }
-
     }
   },
   methods: {
     startDrag(e) {
-      console.log("drag started", e);
       const thisAccessory = this.$el
       this.isDraggable = true
-      this.isDragging = true;
 
       // Set current coordinates
       const currentCoords = thisAccessory.getBoundingClientRect()
       this.top = currentCoords.top
       this.left = currentCoords.left
 
-      // thisAccessory.style.top = `${ e.pageX - thisAccessory.offsetWidth / 2 }px`
-      // thisAccessory.style.left = `${ e.pageY - thisAccessory.offsetHeight / 2 }px`
+      thisAccessory.style.top = `${ e.pageX - thisAccessory.offsetWidth / 2 }px`
+      thisAccessory.style.left = `${ e.pageY - thisAccessory.offsetHeight / 2 }px`
+
+      document.addEventListener('drag', this.changePosition)
     },
-    drag(e) {
-      console.log("dragging", e);
-      if (this.isDragging) {
-        this.top = `${ e.pageY - this.$el.offsetWidth / 2 }px`;
-        this.left = `${ e.pageX - this.$el.offsetHeight / 2 }px`;
-      }
+    changePosition(e) {
+      const thisAccessory = this.$el.style
+      if (e.pageX === 0) return
+
+      thisAccessory.top = `${ e.pageY - this.$el.offsetWidth / 2 }px`;
+      thisAccessory.left = `${ e.pageX - this.$el.offsetHeight / 2 }px`;
     },
-    stopDrag() {
-      console.log("dragging stopped");
-      this.isDragging = false;
+    dropAccessory() {
+      document.removeEventListener('drag', this.changePosition)
     }
   }
 }

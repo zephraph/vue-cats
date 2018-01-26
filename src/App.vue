@@ -3,9 +3,7 @@
     <h1>😸 Vuer</h1>
     <div class="content">
       <CatContainer>
-        <ViewSlider />
-        <ViewSlider />
-        <ViewSlider />
+        <ViewSlider v-for="(part, idx) in catParts" :key="idx" />
       </CatContainer>
       <TheCloset/>
     </div>
@@ -26,8 +24,7 @@ export default {
   },
   data() {
     return {
-      msg: "Welcome to Your Vue.js App",
-      items: [
+      catParts: [
         ["bow", "flower", "glasses", "heart"],
         ["shirt1", "shirt2", "shirt3", "shirt5"],
         ["pants1", "pants2", "pants3", "pants4"]
@@ -61,6 +58,7 @@ export default {
 .TheCloset {
   min-width: 250px;
   background-color: red;
+  overflow: auto;
 }
 
 .CatContainer {
