@@ -35,25 +35,17 @@ export default {
 
 <style scoped>
 button.side-button{
-  height: 200px;
-  font-size: 20px;
-  max-width: 100px;
+
 }
 
 img {
-  height: 200px;
+  height: 100%;
 }
 
-.content {
-  display: flex;
-}
 .ViewSlider {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  height: calc(100%/3);
   justify-content: space-between;
-  align-items: center;
-  text-align: center;
   border: red;
 }
 </style>
