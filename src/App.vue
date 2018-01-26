@@ -1,14 +1,14 @@
 <template>
   <div class="App">
-    <div class="Content">
-      <h1>😸 Vuer</h1>
+    <h1>😸 Vuer</h1>
+    <div class="content">
       <CatContainer>
         <ViewSlider />
         <ViewSlider />
         <ViewSlider />
       </CatContainer>
+      <TheCloset/>
     </div>
-    <TheCloset/>
   </div>
 </template>
 
@@ -40,23 +40,31 @@ export default {
 <style scoped>
 .App {
   display: flex;
-}
-
-.Content,
-.TheCloset {
-  border: 1px dashed black;
+  flex-direction: column;
   height: 100%;
 }
 
-.Content {
-  width: calc(80% - 10px);
-  min-width: 500px;
-  margin-right: 10px;
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 20px 20px;
+  width: calc(100% - 40px);
+  height: calc(100% - 20px);
+}
+
+.content,
+.TheCloset {
+  border: 1px dashed black;
 }
 
 .TheCloset {
-  width: calc(20% - 10px);
+  min-width: 250px;
   background-color: red;
+}
+
+.CatContainer {
+  width: 100%;
 }
 
 h1 {
