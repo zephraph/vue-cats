@@ -48,7 +48,8 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    contentBase: [process.cwd(), path.resolve('./src/assets')]
   },
   performance: {
     hints: false
