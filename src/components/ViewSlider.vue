@@ -41,7 +41,7 @@ img {
 
 .ViewSlider {
   display: flex;
-  height: calc(100%/3);
   justify-content: space-between;
+  height: calc(100%/3);
 }
 </style>

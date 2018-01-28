@@ -1,5 +1,5 @@
 <template>
-  <img :src="imgUrl" @dragenter="startDrag" @dragend="dropAccessory" :style="positionCSS" class="ViewAccessory" />
+  <img  class="ViewAccessory" :src="imgUrl" :style="positionCSS" @dragenter="startDrag" @dragend="dropAccessory" />
 </template>
 
 <script>
@@ -20,6 +20,7 @@ export default {
   computed: {
     positionCSS() {
       if (this.isDraggable) {
+        // TODO: Decide if z-index belongs here or in CSS
         return `
           position: absolute;
           z-index: 1;
@@ -31,27 +32,31 @@ export default {
   },
   methods: {
     startDrag(e) {
+      // Grab this element:
       const thisAccessory = this.$el
-      this.isDraggable = true
 
-      // Set current coordinates
+      this.isDraggable = true  // TODO: figure out if we can factor this out or not
+
+      // TODO: check if this can be refactored
+      // Set accessory's current position in the data:
       const currentCoords = thisAccessory.getBoundingClientRect()
       this.top = currentCoords.top
       this.left = currentCoords.left
 
-      thisAccessory.style.top = `${ e.pageX - thisAccessory.offsetWidth / 2 }px`
-      thisAccessory.style.left = `${ e.pageY - thisAccessory.offsetHeight / 2 }px`
-
+      // Create an event listener that changes the current position on the `drag` event:
       document.addEventListener('drag', this.changePosition)
     },
     changePosition(e) {
-      const thisAccessory = this.$el.style
+      // Prevent the image from jumping to top-left corner of page on mouse-up:
       if (e.pageX === 0) return
 
+      // Update accessory's position:
+      const thisAccessory = this.$el.style
       thisAccessory.top = `${ e.pageY - this.$el.offsetWidth / 2 }px`;
       thisAccessory.left = `${ e.pageX - this.$el.offsetHeight / 2 }px`;
     },
     dropAccessory() {
+      // Clean up `drag` event listener:
       document.removeEventListener('drag', this.changePosition)
     }
   }

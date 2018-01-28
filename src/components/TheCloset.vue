@@ -6,9 +6,6 @@
   </div>
 </template>
 
-<style scoped>
-</style>
-
 <script>
 import ViewAccessory from './ViewAccessory'
 
@@ -37,7 +34,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .TheCloset {
   overflow: scroll;
   text-align: center;

@@ -38,23 +38,12 @@ html, body, .app {
   display: flex;
   height: 100%;
 }
-
-.TheCatContainer,
-.TheCloset {
-  border: 1px solid black;
-}
-
 .TheCloset {
   min-width: 250px;
   overflow: auto;
   width: 25%;
 }
-
 .TheCatContainer {
   width: 75%;
-}
-
-h1 {
-  text-align: center;
 }
 </style>
