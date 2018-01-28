@@ -26,9 +26,11 @@ export default {
   methods: {
     scrollLeft() {
       if (this.currentIdx) --this.currentIdx;
+      else this.currentIdx = this.images.length - 1;
     },
     scrollRight() {
       if (this.currentIdx < this.images.length - 1) ++this.currentIdx;
+      else this.currentIdx = 0;
     }
   }
 };
@@ -37,11 +39,12 @@ export default {
 <style scoped>
 img {
   height: 100%;
+  display: inline-block;
 }
 
 .ViewSlider {
   display: flex;
-  height: calc(100%/3);
   justify-content: space-between;
+  height: calc(100%/3);
 }
 </style>

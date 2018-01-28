@@ -1,5 +1,5 @@
 <template>
-  <img :src="imgUrl" @dragenter="startDrag" @dragend="dropAccessory" :style="positionCSS" class="ViewAccessory" />
+  <img  class="ViewAccessory" :src="imgUrl" :style="[heightStyle, positionCSS]" @dragenter="startDrag" @dragend="dropAccessory" />
 </template>
 
 <script>
@@ -8,6 +8,10 @@ export default {
     imgUrl: {
       type: String,
       required: true,
+    },
+    height: {
+      type: Number,
+      required: true
     }
   },
   data() {
@@ -18,40 +22,50 @@ export default {
     }
   },
   computed: {
+    heightStyle() {
+      return {
+        height: `${this.height}px`
+      };
+    },
     positionCSS() {
       if (this.isDraggable) {
-        return `
-          position: absolute;
-          z-index: 1;
-          top: ${ this.top }px;
-          left: ${ this.left }px;
-        `
+        // TODO: Decide if z-index belongs here or in CSS
+        return {
+          position: 'absolute',
+          zIndex: 1,
+          top: `${ this.top }px`,
+          left: `${ this.left }px`
+        }
       }
+      return {};
     }
   },
   methods: {
     startDrag(e) {
+      // Grab this element:
       const thisAccessory = this.$el
-      this.isDraggable = true
 
-      // Set current coordinates
+      this.isDraggable = true  // TODO: figure out if we can factor this out or not
+
+      // TODO: check if this can be refactored
+      // Set accessory's current position in the data:
       const currentCoords = thisAccessory.getBoundingClientRect()
       this.top = currentCoords.top
       this.left = currentCoords.left
 
-      thisAccessory.style.top = `${ e.pageX - thisAccessory.offsetWidth / 2 }px`
-      thisAccessory.style.left = `${ e.pageY - thisAccessory.offsetHeight / 2 }px`
-
+      // Create an event listener that changes the current position on the `drag` event:
       document.addEventListener('drag', this.changePosition)
     },
     changePosition(e) {
-      const thisAccessory = this.$el.style
+      // Prevent the image from jumping to top-left corner of page on mouse-up:
       if (e.pageX === 0) return
 
-      thisAccessory.top = `${ e.pageY - this.$el.offsetWidth / 2 }px`;
-      thisAccessory.left = `${ e.pageX - this.$el.offsetHeight / 2 }px`;
+      // Update accessory's position:
+      this.top = e.pageY - this.$el.offsetHeight / 2;
+      this.left = e.pageX - this.$el.offsetWidth / 2;
     },
     dropAccessory() {
+      // Clean up `drag` event listener:
       document.removeEventListener('drag', this.changePosition)
     }
   }

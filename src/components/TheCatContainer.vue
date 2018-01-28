@@ -49,8 +49,8 @@ export default {
   flex-direction: column;
 }
 input {
-  font-size: 2rem;
   width: 100%;
+  font-size: 2rem;
   text-align: center;
 }
 </style>

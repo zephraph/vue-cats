@@ -1,13 +1,10 @@
 <template>
   <div class="TheCloset">
     <div v-for="(accessory, idx) in accessories" :key="idx" :style="setHeight(accessory)" class="accessory-box">
-      <ViewAccessory :imgUrl="accessory.imgUrl"></ViewAccessory>
+      <ViewAccessory :imgUrl="accessory.imgUrl" :height="accessory.height"></ViewAccessory>
     </div>
   </div>
 </template>
-
-<style scoped>
-</style>
 
 <script>
 import ViewAccessory from './ViewAccessory'
@@ -42,7 +39,10 @@ export default {
         {
           imgUrl: 'src/assets/accessories/heart.png',
           height: 100,
-        },
+        }, {
+          imgUrl: 'src/assets/accessories/glasses.png',
+          height: 110
+        }
       ]
     }
   },
@@ -54,7 +54,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .TheCloset {
   overflow: scroll;
   text-align: center;
