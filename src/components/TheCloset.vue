@@ -41,10 +41,10 @@ export default {
 .TheCloset {
   overflow: scroll;
   text-align: center;
+  padding: 2rem 0;
 }
 .accessory-box {
-  /* display: inline-block; */
-  margin: 5px;
+  margin: 2vh;
 }
 </style>
 

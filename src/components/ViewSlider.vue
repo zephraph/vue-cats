@@ -3,9 +3,7 @@
     
     <button @click="scrollLeft">◀</button>
 
-    <div class="content">
-      <img :src="images[currentIdx]" />
-    </div>
+    <img :src="images[currentIdx]" />
     
     <button @click="scrollRight">▶</button>
     
@@ -45,6 +43,5 @@ img {
   display: flex;
   height: calc(100%/3);
   justify-content: space-between;
-  border: red;
 }
 </style>

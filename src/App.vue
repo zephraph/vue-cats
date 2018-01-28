@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <div class="stage">
-      <input v-if="!catName" v-model="catName" placeholder="Name your cat" />
-      <TheCatContainer />
-    </div>
+    <TheCatContainer />
     <TheCloset />
   </div>
 </template>
@@ -17,12 +14,7 @@ export default {
   components: {
     TheCatContainer,
     TheCloset,
-  },
-  data() {
-    return {
-      catName: ''
-    }
-  },
+  }
 }
 </script>
 
@@ -44,33 +36,22 @@ html, body, .app {
 <style scoped>
 #app {
   display: flex;
-  flex-direction: column;
   height: 100%;
 }
 
-.stage {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-between;
-}
-
-.stage,
+.TheCatContainer,
 .TheCloset {
   border: 1px solid black;
-}
-
-input {
-  font-size: 2rem;
 }
 
 .TheCloset {
   min-width: 250px;
   overflow: auto;
+  width: 25%;
 }
 
 .TheCatContainer {
-  width: 100%;
+  width: 75%;
 }
 
 h1 {
