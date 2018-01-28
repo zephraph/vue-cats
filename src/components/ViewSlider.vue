@@ -1,25 +1,28 @@
 <template>
   <div class="ViewSlider">
-    <button class="side-button" @click="scrollLeft">◀</button>
+    
+    <button @click="scrollLeft">◀</button>
+
     <div class="content">
-      <img :src="optionsArr[currentIdx]" />
+      <img :src="images[currentIdx]" />
     </div>
-    <button class="side-button" @click="scrollRight">▶</button>
+    
+    <button @click="scrollRight">▶</button>
+    
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    images: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
-      currentIdx: 1,
-      optionsArr: [
-        "https://www.placecage.com/200/200",
-        "https://www.placecage.com/300/300",
-        "https://www.placecage.com/500/500",
-        "https://www.placecage.com/700/700",
-        "https://www.placecage.com/900/900"
-      ]
+      currentIdx: 0,
     };
   },
   methods: {
@@ -27,17 +30,13 @@ export default {
       if (this.currentIdx) --this.currentIdx;
     },
     scrollRight() {
-      if (this.currentIdx < this.optionsArr.length - 1) ++this.currentIdx;
+      if (this.currentIdx < this.images.length - 1) ++this.currentIdx;
     }
   }
 };
 </script>
 
 <style scoped>
-button.side-button{
-
-}
-
 img {
   height: 100%;
 }

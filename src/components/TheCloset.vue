@@ -20,11 +20,8 @@ export default {
     return {
       accessories: [
         {
-          imgUrl: 'https://www.placecage.com/100/100',
-          height: 100,
-        }, {
-          imgUrl: 'https://www.placecage.com/100/100',
-          height: 100,
+          imgUrl: 'src/assets/accessories/mug.png',
+          height: 150,
         }, {
           imgUrl: 'https://www.placecage.com/100/100',
           height: 100,
