@@ -39,10 +39,7 @@ export default {
         {
           imgUrl: 'src/assets/accessories/heart.png',
           height: 100,
-        }, {
-          imgUrl: 'src/assets/accessories/glasses.png',
-          height: 110
-        }
+        }, 
       ]
     }
   },
