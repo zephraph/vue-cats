@@ -26,9 +26,11 @@ export default {
   methods: {
     scrollLeft() {
       if (this.currentIdx) --this.currentIdx;
+      else this.currentIdx = this.images.length - 1;
     },
     scrollRight() {
       if (this.currentIdx < this.images.length - 1) ++this.currentIdx;
+      else this.currentIdx = 0;
     }
   }
 };
