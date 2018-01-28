@@ -18,14 +18,28 @@ export default {
       accessories: [
         {
           imgUrl: 'src/assets/accessories/mug.png',
-          height: 150,
-        }, {
-          imgUrl: 'https://www.placecage.com/100/100',
           height: 100,
-        }, {
+        },
+        {
+          imgUrl: 'src/assets/accessories/flower.png',
+          height: 100,
+        },
+        {
+          imgUrl: 'src/assets/accessories/bow.png',
+          height: 100,
+        },
+        {
           imgUrl: 'src/assets/accessories/glasses.png',
-          height: 110
-        }
+          height: 100,
+        },
+        {
+          imgUrl: 'src/assets/accessories/vue.png',
+          height: 100,
+        },
+        {
+          imgUrl: 'src/assets/accessories/heart.png',
+          height: 100,
+        }, 
       ]
     }
   },
