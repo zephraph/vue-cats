@@ -51,7 +51,7 @@ html, body, .app {
 }
 
 .TheCatContainer {
-  width: 80%;
+  width: 75%;
 }
 
 h1 {
