@@ -37,6 +37,7 @@ export default {
 <style scoped>
 img {
   height: 100%;
+  display: inline-block;
 }
 
 .ViewSlider {
