@@ -1,5 +1,5 @@
 <template>
-  <img  class="ViewAccessory" :src="imgUrl" :style="[heightStyle, positionCSS]" @dragenter="startDrag" @dragend="dropAccessory" />
+  <img  class="ViewAccessory" :src="imgUrl" :style="[heightStyle, positionCSS]" @mousedown="startDrag" draggable="false" />
 </template>
 
 <script>
@@ -7,7 +7,7 @@ export default {
   props: {
     imgUrl: {
       type: String,
-      required: true,
+      required: true
     },
     height: {
       type: Number,
@@ -19,7 +19,9 @@ export default {
       isDraggable: false,
       top: 0,
       left: 0,
-    }
+      topOffset: 0,
+      leftOffset: 0
+    };
   },
   computed: {
     heightStyle() {
@@ -29,47 +31,48 @@ export default {
     },
     positionCSS() {
       if (this.isDraggable) {
-        // TODO: Decide if z-index belongs here or in CSS
         return {
           position: 'absolute',
-          zIndex: 1,
-          top: `${ this.top }px`,
-          left: `${ this.left }px`
-        }
+          top: `${this.top}px`,
+          left: `${this.left}px`
+        };
       }
       return {};
     }
   },
   methods: {
     startDrag(e) {
-      // Grab this element:
-      const thisAccessory = this.$el
-
-      this.isDraggable = true  // TODO: figure out if we can factor this out or not
+      this.isDraggable = true;
 
       // TODO: check if this can be refactored
       // Set accessory's current position in the data:
-      const currentCoords = thisAccessory.getBoundingClientRect()
-      this.top = currentCoords.top
-      this.left = currentCoords.left
+      const currentCoords = this.$el.getBoundingClientRect();
+      this.top = currentCoords.top;
+      this.left = currentCoords.left;
+
+      // Track the mouse's position on the element
+      this.topOffset = e.offsetY;
+      this.leftOffset = e.offsetX;
 
       // Create an event listener that changes the current position on the `drag` event:
-      document.addEventListener('drag', this.changePosition)
+      document.addEventListener('mousemove', this.changePosition);
+      document.addEventListener('mouseup', this.dropAccessory);
     },
     changePosition(e) {
       // Prevent the image from jumping to top-left corner of page on mouse-up:
-      if (e.pageX === 0) return
+      if (e.pageX === 0) return;
 
       // Update accessory's position:
-      this.top = e.pageY - this.$el.offsetHeight / 2;
-      this.left = e.pageX - this.$el.offsetWidth / 2;
+      this.top = e.pageY - this.topOffset;
+      this.left = e.pageX - this.leftOffset;
     },
     dropAccessory() {
       // Clean up `drag` event listener:
-      document.removeEventListener('drag', this.changePosition)
+      document.removeEventListener('mousemove', this.changePosition);
+      document.removeEventListener('mouseup', this.dropAccessory);
     }
   }
-}
+};
 </script>
 
 <style>
