@@ -1,5 +1,5 @@
 <template>
-  <img  class="ViewAccessory" :src="imgUrl" :style="positionCSS" @dragenter="startDrag" @dragend="dropAccessory" />
+  <img  class="ViewAccessory" :src="imgUrl" :style="[heightStyle, positionCSS]" @dragenter="startDrag" @dragend="dropAccessory" />
 </template>
 
 <script>
@@ -8,6 +8,10 @@ export default {
     imgUrl: {
       type: String,
       required: true,
+    },
+    height: {
+      type: Number,
+      required: true
     }
   },
   data() {
@@ -18,16 +22,22 @@ export default {
     }
   },
   computed: {
+    heightStyle() {
+      return {
+        height: `${this.height}px`
+      };
+    },
     positionCSS() {
       if (this.isDraggable) {
         // TODO: Decide if z-index belongs here or in CSS
-        return `
-          position: absolute;
-          z-index: 1;
-          top: ${ this.top }px;
-          left: ${ this.left }px;
-        `
+        return {
+          position: 'absolute',
+          zIndex: 1,
+          top: `${ this.top }px`,
+          left: `${ this.left }px`
+        }
       }
+      return {};
     }
   },
   methods: {
@@ -51,9 +61,8 @@ export default {
       if (e.pageX === 0) return
 
       // Update accessory's position:
-      const thisAccessory = this.$el.style
-      thisAccessory.top = `${ e.pageY - this.$el.offsetWidth / 2 }px`;
-      thisAccessory.left = `${ e.pageX - this.$el.offsetHeight / 2 }px`;
+      this.top = e.pageY - this.$el.offsetHeight / 2;
+      this.left = e.pageX - this.$el.offsetWidth / 2;
     },
     dropAccessory() {
       // Clean up `drag` event listener:

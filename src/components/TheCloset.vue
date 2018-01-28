@@ -1,7 +1,7 @@
 <template>
   <div class="TheCloset">
     <div v-for="(accessory, idx) in accessories" :key="idx" :style="setHeight(accessory)" class="accessory-box">
-      <ViewAccessory :imgUrl="accessory.imgUrl"></ViewAccessory>
+      <ViewAccessory :imgUrl="accessory.imgUrl" :height="accessory.height"></ViewAccessory>
     </div>
   </div>
 </template>
@@ -22,7 +22,10 @@ export default {
         }, {
           imgUrl: 'https://www.placecage.com/100/100',
           height: 100,
-        },
+        }, {
+          imgUrl: 'src/assets/accessories/glasses.png',
+          height: 110
+        }
       ]
     }
   },
