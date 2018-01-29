@@ -1,20 +1,11 @@
 <template>
-  <div id="app">
-    <TheCatContainer />
-    <TheCloset />
-  </div>
+<div id="app">
+
+</div>
 </template>
 
 <script>
-import TheCloset from "./components/TheCloset"
-import TheCatContainer from "./components/TheCatContainer"
-
 export default {
-  name: "app",
-  components: {
-    TheCatContainer,
-    TheCloset,
-  }
 }
 </script>
 
