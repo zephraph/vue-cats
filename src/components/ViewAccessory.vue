@@ -1,5 +1,5 @@
 <template>
-  <img  class="ViewAccessory" :src="imgUrl" :style="[heightStyle, positionCSS]" @mousedown="startDrag" draggable="false" />
+  <img  class="ViewAccessory" :src="imgUrl" :style="[heightStyle, positionCSS]" draggable="false" @mousedown="startDrag" />
 </template>
 
 <script>
