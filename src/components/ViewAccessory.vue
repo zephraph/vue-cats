@@ -44,7 +44,6 @@ export default {
     startDrag(e) {
       this.isDraggable = true;
 
-      // TODO: check if this can be refactored
       // Set accessory's current position in the data:
       const currentCoords = this.$el.getBoundingClientRect();
       this.top = currentCoords.top;
@@ -59,15 +58,12 @@ export default {
       document.addEventListener('mouseup', this.dropAccessory);
     },
     changePosition(e) {
-      // Prevent the image from jumping to top-left corner of page on mouse-up:
-      if (e.pageX === 0) return;
-
       // Update accessory's position:
       this.top = e.pageY - this.topOffset;
       this.left = e.pageX - this.leftOffset;
     },
     dropAccessory() {
-      // Clean up `drag` event listener:
+      // Clean up `mousemove` and `mouseup` event listeners:
       document.removeEventListener('mousemove', this.changePosition);
       document.removeEventListener('mouseup', this.dropAccessory);
     }
