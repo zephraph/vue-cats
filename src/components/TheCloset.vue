@@ -1,7 +1,7 @@
 <template>
   <div class="TheCloset">
     <div v-for="(accessory, idx) in accessories" :key="idx" :style="setHeight(accessory)" class="accessory-box">
-      <ViewAccessory :imgUrl="accessory.imgUrl" :height="accessory.height"></ViewAccessory>
+      <ViewAccessory :imgUrl="accessory.imgUrl" :height="accessory.height" />
     </div>
   </div>
 </template>
