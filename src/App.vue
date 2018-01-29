@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import TheCloset from "./components/TheCloset";
-import TheCatContainer from "./components/TheCatContainer";
+import TheCloset from "./components/TheCloset"
+import TheCatContainer from "./components/TheCatContainer"
 
 export default {
   name: "app",
