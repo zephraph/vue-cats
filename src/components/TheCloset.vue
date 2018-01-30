@@ -4,32 +4,34 @@
 
 <script>
 
+const domain = 'https://raw.githubusercontent.com/zephraph/vue-cats/testStartingPoint/';
+
 export default {
   data() {
     return {
       accessories: [
         {
-          imgUrl: 'src/assets/accessories/mug.png',
+          imgUrl: `${domain}/src/assets/accessories/mug.png`,
           height: 100,
         },
         {
-          imgUrl: 'src/assets/accessories/flower.png',
+          imgUrl: `${domain}/src/assets/accessories/flower.png`,
           height: 100,
         },
         {
-          imgUrl: 'src/assets/accessories/bow.png',
+          imgUrl: `${domain}/src/assets/accessories/bow.png`,
           height: 100,
         },
         {
-          imgUrl: 'src/assets/accessories/glasses.png',
+          imgUrl: `${domain}/src/assets/accessories/glasses.png`,
           height: 100,
         },
         {
-          imgUrl: 'src/assets/accessories/vue.png',
+          imgUrl: `${domain}/src/assets/accessories/vue.png`,
           height: 100,
         },
         {
-          imgUrl: 'src/assets/accessories/heart.png',
+          imgUrl: `${domain}/src/assets/accessories/heart.png`,
           height: 100,
         }, 
       ]
