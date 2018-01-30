@@ -1,20 +1,10 @@
 <template>
-  <div class="TheCatContainer">
-    <input v-model="catName" :placeholder="catName" />
-    <ViewSlider v-for="(part, idx) in catParts" :key="idx" :images="part" />
-  </div>
 </template>
 
 <script>
-import ViewSlider from './ViewSlider';
-
 export default {
-  components: {
-    ViewSlider
-  },
   data() {
     return {
-      catName: 'Name your cat',
       catParts: [
         [
           'src/assets/heads/cat.png',
